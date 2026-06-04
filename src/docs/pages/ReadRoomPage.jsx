@@ -10,7 +10,7 @@ const ANATOMY = [
   { label: 'Display headline', desc: '76px Newsreader, italic accent on the name.' },
   { label: 'Lede + sub', desc: 'Two serif paragraphs at 32ch / 44ch measures.' },
   { label: 'Links', desc: 'Pill button group, pinned to the column bottom.' },
-  { label: 'Testimonial rail', desc: 'Right column behind a gold left border: pull-quote + “Now” block.' },
+  { label: 'Testimonial rail', desc: 'Right column behind a gold left border: rotating pull-quote (crossfades through LJ.quotes) + “Now” block.' },
 ];
 
 const SNIPPET = `import ReadRoom from '@/components/ReadRoom';
@@ -40,8 +40,10 @@ export default function ReadRoomPage() {
 
       <Section title="States">
         <Note>
-          The Read room itself is static — its “state” is positional: it is the <code>z-index:1</code>{' '}
-          background room that the Play room reveals or covers during a transition. See{' '}
+          The Read room is layout-static — its “state” is positional: it is the <code>z-index:1</code>{' '}
+          background room that the Play room reveals or covers during a transition. The one moving
+          part is the testimonial rail, whose pull-quote crossfades through <code>LJ.quotes</code>{' '}
+          on a 6s hold / 700ms fade rhythm (paused under <code>prefers-reduced-motion</code>). See{' '}
           <a className="lj-link" href="#/foundations/motion">Motion</a> and{' '}
           <a className="lj-link" href="#/templates/stage">Stage</a>.
         </Note>

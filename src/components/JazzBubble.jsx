@@ -112,18 +112,24 @@ export default function JazzBubble({ active = true, colors = { a: '#28289C', b: 
       }
       sceneRef.current = scene;
 
-      // Mixer — live tuning. Gradient edits push fresh uniforms to the shader;
-      // glass/sphere/grid edits are read by the scene's per-frame syncs.
-      const pushGradient = () => shaderRef.current?.update('bg_gradient', config.gradient);
-      const mixer = setupMixer({
-        config,
-        defaults,
-        onGradientChange: pushGradient,
-        onReloadDefaults: pushGradient,
-        container, // scope the panel to this host so it stays inside bounded specimens
-      });
-      mixerRef.current = mixer;
-      mixer.element.style.display = activeRef.current ? '' : 'none';
+      // Mixer — DEV ONLY. The live-tuning panel must never ship to production.
+      // `import.meta.env.DEV` is statically false in `vite build`, so this block
+      // (and the Tweakpane dependency it pulls) is dead-code-eliminated from the
+      // published bundle — the panel is only ever visible on local `npm run dev`.
+      // Gradient edits push fresh uniforms to the shader; glass/sphere/grid edits
+      // are read by the scene's per-frame syncs.
+      if (import.meta.env.DEV) {
+        const pushGradient = () => shaderRef.current?.update('bg_gradient', config.gradient);
+        const mixer = setupMixer({
+          config,
+          defaults,
+          onGradientChange: pushGradient,
+          onReloadDefaults: pushGradient,
+          container, // scope the panel to this host so it stays inside bounded specimens
+        });
+        mixerRef.current = mixer;
+        mixer.element.style.display = activeRef.current ? '' : 'none';
+      }
 
       setStatus('ready');
       if (activeRef.current) { shader.resume(); scene.start(); }

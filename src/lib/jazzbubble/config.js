@@ -15,12 +15,13 @@ export const BRAND = {
 };
 
 // Animated FlowingGradient background (rendered via shaders/js, used as the
-// three.js scene background texture). Re-themed paper → gold → indigo → navy.
+// three.js scene background texture). Mixer-tuned to a cool
+// paper → pale-green → mint → aqua wash.
 export const gradientConfig = {
-  colorA: BRAND.paper,
-  colorB: '#E2D7BC', // warm gold-tinted paper
-  colorC: BRAND.indigo,
-  colorD: BRAND.navy,
+  colorA: '#f2eee5', // warm paper
+  colorB: '#dbe5bc', // pale green
+  colorC: '#dfffe0', // mint
+  colorD: '#a0e8e8', // aqua
   colorSpace: 'oklch',
   speed: 1,
   distortion: 0.5,
@@ -49,7 +50,7 @@ export const glassConfig = {
   attenuationColor: '#ffffff',
   specularIntensity: 0.33,
   specularColor: BRAND.navy,
-  emissive: BRAND.indigo,
+  emissive: '#4a4afc', // bright periwinkle (Mixer-tuned)
   emissiveIntensity: 0.71,
   waveAmp: 0.071,
   waveFreq: 5.2,
@@ -69,18 +70,18 @@ export const sphereConfig = {
   autoRotZ: 0,
   wireframe: false,
   visible: true,
-  cameraZ: 13.4,
-  cameraY: 7.6,
+  cameraZ: 17.1,
+  cameraY: 9.9,
   bounceHeight: 2.6,
 };
 
-// Floor grid. center line = indigo, regular lines = gold by default; both can be
+// Floor grid. center line = indigo, regular lines = white by default; both can be
 // overridden from the Stage `canvasColors` prop (see makeConfig).
 export const gridConfig = {
   size: 19.5,
   divisions: 4,
   color1: BRAND.indigo, // center cross
-  color2: BRAND.gold, // regular lines
+  color2: '#ffffff', // regular lines (Mixer-tuned to white)
   lineWidth: 1,
   y: -0.74,
   visible: true,

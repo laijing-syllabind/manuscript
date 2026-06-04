@@ -63,7 +63,7 @@ export default function PlayCanvasPage() {
       <PageHeader
         eyebrow="Organisms"
         title="Play Canvas"
-        lede="The three.js surface that fills the Play room. The landing page runs mode='bubble' — JazzBubble, a glass blob that plays a Dm-pentatonic scale across a grid over an animated FlowingGradient backdrop, with a live Tweakpane mixer (top-right, while active) and a keycap legend. The four point-cloud modes are the original generative scaffold, kept as a lightweight reference. Runs only while active."
+        lede="The three.js surface that fills the Play room. The landing page runs mode='bubble' — JazzBubble, a glass blob that plays a Dm-pentatonic scale across a grid over an animated FlowingGradient backdrop, with a dev-only Tweakpane mixer (top-right while active on local `npm run dev`; stripped from production builds) and a keycap legend. The four point-cloud modes are the original generative scaffold, kept as a lightweight reference. Runs only while active."
       />
 
       <Section title="Live">
