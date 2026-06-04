@@ -101,7 +101,7 @@ export default function ManuscriptPage() {
           ))}
         </div>
         <Note>
-          Opens full-screen at <a className="lj-link" href="../index.html">/index.html</a>. This docs
+          Opens full-screen at <a className="lj-link" href={`${import.meta.env.BASE_URL}index.html`}>/index.html</a>. This docs
           site lives alongside it at <code>/docs/</code> — neither touches the other.
         </Note>
       </Section>
