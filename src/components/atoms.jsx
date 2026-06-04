@@ -19,7 +19,7 @@ export function TopLinks({ font = MONO, light }) {
       {[med, lin, em].map(([n, u]) => (
         <a key={n} href={u} target="_blank" rel="noreferrer" className="lj-link" style={{ fontFamily: font, fontSize: 12.5, color: lcol }}>{n}</a>
       ))}
-      <a href={`${import.meta.env.BASE_URL}docs.html`} className="lj-link" style={{ fontFamily: font, fontSize: 12.5, color: lcol }}>Design system</a>
+      <a href={`${import.meta.env.BASE_URL}docs/`} className="lj-link" style={{ fontFamily: font, fontSize: 12.5, color: lcol }}>Design system</a>
       <Button asChild variant="gold" size="sm">
         <a href={syl[1]} target="_blank" rel="noreferrer" style={{ fontFamily: font }}>Syllabind ↗</a>
       </Button>

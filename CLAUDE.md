@@ -2,7 +2,7 @@
 
 ## Design system docs are a mirror of the code — keep them in sync
 
-This repo ships a design-system documentation site at `/docs.html` (source in `src/docs/`,
+This repo ships a design-system documentation site at `/docs/` (source in `src/docs/`,
 modeled on Material/Carbon, organized by Atomic Design). The docs render the **real** components,
 so behavior stays live — but token tables, prop/variant tables, **states matrices**, anatomy notes,
 and code snippets are authored by hand and WILL drift unless you update them.
@@ -22,8 +22,8 @@ and code snippets are authored by hand and WILL drift unless you update them.
 its visual states (hover/focus/active/disabled/selected), its anatomy, or the public API. Pure
 refactors with identical output don't require doc edits.
 
-**Definition of done:** `npm run dev` → open `/docs.html`, confirm the changed page reflects reality
-(values, all states, snippets), and `npm run build` emits both `index.html` and `docs.html`.
+**Definition of done:** `npm run dev` → open `/docs/`, confirm the changed page reflects reality
+(values, all states, snippets), and `npm run build` emits both `index.html` and `docs/index.html`.
 
 ## Repo orientation
 
@@ -33,4 +33,4 @@ refactors with identical output don't require doc edits.
 - `src/components/atoms.jsx` — `Eyebrow`, `TopLinks`, `Links`, `PlayTag`.
 - `src/components/{Stage,ReadRoom,PlayCanvas,Toggle}.jsx` — the "Two Rooms" architecture.
 - `src/data/lj.js` — content model. `src/lib/utils.js` — `cn()` class combiner.
-- `src/docs/` — the documentation site (separate Vite entry, `docs.html`). Does not touch the landing page.
+- `src/docs/` — the documentation site (separate Vite entry, `docs/index.html` → `/docs/`). Does not touch the landing page.

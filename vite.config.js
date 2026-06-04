@@ -15,10 +15,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       // Two entry points: the landing page (index.html) and the
-      // design-system documentation site (docs.html).
+      // design-system documentation site (docs/index.html → served at /docs/).
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        docs: path.resolve(__dirname, 'docs.html'),
+        docs: path.resolve(__dirname, 'docs/index.html'),
       },
     },
   },
