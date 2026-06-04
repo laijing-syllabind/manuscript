@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   LJ brand tokens + the "Two Rooms" stage machine.
+   Shared across all four direction repos — per-direction look
+   is set via the `theme` CSS-var object in App.jsx.
+   ============================================================ */
+:root {
+  --paper: #faf6ec;
+  --ink: #15131f;
+  --indigo: #28289c;
+  --gold: #86632c;
+  --label: #56566e;
+  --navy: #0b0a1f;
+}
+
+html, body, #root { height: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); }
+* { box-sizing: border-box; }
+
+/* ---- stage shell ---- */
+.lj-stage {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+}
+.lj-top {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 30px;
+  border-bottom: 1.5px solid var(--ink);
+}
+.lj-wordmark { display: flex; align-items: center; min-width: 0; }
+.lj-topright { display: flex; align-items: center; gap: 22px; flex: 0 0 auto; }
+
+/* ---- rooms + transitions ---- */
+.lj-rooms { position: relative; flex: 1 1 auto; overflow: hidden; }
+.lj-room {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-origin: center;
+  transition: transform .62s cubic-bezier(.66, 0, .2, 1), opacity .5s ease, clip-path .66s ease;
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+.lj-room.read { z-index: 1; background: var(--paper); }
+.lj-room.play { z-index: 2; background: var(--play-bg, var(--paper)); }
+.lj-room.read * { flex-shrink: 0; }
+
+/* flip — opacity hard-swaps at the 90° midpoint (no backface culling needed) */
+.lj-rooms[data-tr="flip"] { perspective: 2000px; }
+.lj-rooms[data-tr="flip"] .lj-room { transition: transform .64s cubic-bezier(.66, 0, .2, 1), opacity 0s linear .32s; }
+.lj-rooms[data-tr="flip"] .read { transform: rotateY(0deg); opacity: 1; }
+.lj-rooms[data-tr="flip"] .play { transform: rotateY(180deg); opacity: 0; }
+.lj-rooms[data-tr="flip"][data-mode="play"] .read { transform: rotateY(-180deg); opacity: 0; }
+.lj-rooms[data-tr="flip"][data-mode="play"] .play { transform: rotateY(0deg); opacity: 1; }
+
+/* iris */
+.lj-rooms[data-tr="iris"] .play { clip-path: circle(0% at 50% 0%); }
+.lj-rooms[data-tr="iris"][data-mode="play"] .play { clip-path: circle(160% at 50% 0%); }
+
+/* cover */
+.lj-rooms[data-tr="cover"] .play { transform: translateY(101%); }
+.lj-rooms[data-tr="cover"][data-mode="play"] .play { transform: translateY(0); }
+
+/* dissolve */
+.lj-rooms[data-tr="dissolve"] .play { opacity: 0; transform: scale(1.04); }
+.lj-rooms[data-tr="dissolve"][data-mode="play"] .play { opacity: 1; transform: scale(1); }
+.lj-rooms[data-tr="dissolve"][data-mode="play"] .read { opacity: 0; transform: scale(.985); }
+
+@media (prefers-reduced-motion: reduce) {
+  .lj-room { transition: opacity .25s ease !important; }
+}
+
+/* ---- toggle ---- */
+.lj-seg {
+  position: relative;
+  display: inline-flex;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
+  background: transparent;
+  user-select: none;
+}
+.lj-seg .lj-thumb {
+  position: absolute; z-index: 1; top: 0; bottom: 0; left: 0; width: 50%;
+  background: var(--seg-thumb, var(--indigo));
+  transition: transform .42s cubic-bezier(.66, 0, .2, 1);
+}
+.lj-seg[data-mode="play"] .lj-thumb { transform: translateX(100%); }
+.lj-seg button {
+  position: relative; z-index: 2; border: 0; background: transparent; cursor: pointer;
+  font: inherit; letter-spacing: .04em; color: var(--ink);
+  padding: 7px 18px; display: flex; align-items: center; gap: 6px;
+  transition: color .3s; white-space: nowrap;
+}
+.lj-seg[data-mode="read"] button.read,
+.lj-seg[data-mode="play"] button.play { color: var(--seg-on, var(--paper)); font-weight: 600; }
+.lj-seg button:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+
+/* ---- links ---- */
+.lj-link { color: var(--ink); text-decoration: none; opacity: .72; transition: opacity .15s, color .15s; }
+.lj-link:hover { opacity: 1; color: var(--indigo); }
+.lj-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1.4px solid var(--ink); border-radius: 999px; padding: 5px 13px;
+  text-decoration: none; color: var(--ink); transition: background .15s, color .15s;
+}
+.lj-pill:hover { background: var(--ink); color: var(--paper); }
+.lj-pill.gold { border-color: var(--gold); color: var(--gold); }
+.lj-pill.gold:hover { background: var(--gold); color: var(--paper); }
+
+/* ---- direction-specific helpers (used by Marquee / Index read rooms) ---- */
+@keyframes lj-marq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.lj-marqwrap { overflow: hidden; width: 100%; }
+.lj-marquee { display: inline-flex; white-space: nowrap; animation: lj-marq 30s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .lj-marquee { animation: none; } }
+.lj-irow { transition: background .15s; }
+.lj-irow:hover { background: rgba(40, 40, 156, .05); }
+.lj-irow:hover .lj-iarrow { transform: translateX(4px); opacity: 1; }

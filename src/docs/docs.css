@@ -1,0 +1,656 @@
+/* ============================================================
+   Design-system documentation chrome (.ds-*).
+   Styled in the Manuscript brand — paper/ink palette, Newsreader
+   headings, Space Mono labels — so the docs eat their own dog food.
+   The .lj-* component styles live in index.css; these never clash.
+   ============================================================ */
+
+:root {
+  --ds-sidebar-w: 264px;
+  --ds-serif: 'Newsreader', Georgia, serif;
+  --ds-mono: 'Space Mono', ui-monospace, monospace;
+  --ds-grotesk: 'Space Grotesk', system-ui, sans-serif;
+  --ds-line: rgba(21, 19, 31, 0.12);
+  --ds-line-strong: rgba(21, 19, 31, 0.22);
+  --ds-tint: rgba(40, 40, 156, 0.045);
+  --ds-tint-gold: rgba(134, 99, 44, 0.08);
+}
+
+.ds-app {
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* ---- sidebar ---- */
+.ds-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--ds-sidebar-w);
+  overflow-y: auto;
+  border-right: 1.5px solid var(--ink);
+  background: var(--paper);
+  padding: 26px 20px 40px;
+  z-index: 10;
+}
+.ds-brand {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.ds-brand-name {
+  font-family: var(--ds-serif);
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+.ds-brand-sub {
+  font-family: var(--ds-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--label);
+  margin-top: 2px;
+}
+.ds-nav-group {
+  margin-top: 26px;
+}
+.ds-nav-group-title {
+  font-family: var(--ds-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--label);
+  margin: 0 0 8px 8px;
+}
+.ds-nav-link {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 7px;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: var(--ds-grotesk);
+  font-size: 14px;
+  opacity: 0.74;
+  transition: background 0.12s, opacity 0.12s, color 0.12s;
+}
+.ds-nav-link:hover {
+  opacity: 1;
+  background: var(--ds-tint);
+}
+.ds-nav-link.is-active {
+  opacity: 1;
+  font-weight: 600;
+  color: var(--indigo);
+  background: var(--ds-tint);
+}
+.ds-sidebar-foot {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid var(--ds-line);
+  font-family: var(--ds-mono);
+  font-size: 11px;
+  color: var(--label);
+}
+.ds-sidebar-foot a {
+  color: var(--indigo);
+  text-decoration: none;
+}
+.ds-sidebar-foot a:hover {
+  text-decoration: underline;
+}
+
+/* ---- main + content column ---- */
+.ds-main {
+  margin-left: var(--ds-sidebar-w);
+  min-height: 100vh;
+}
+.ds-content {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 56px 48px 120px;
+}
+
+/* ---- page header ---- */
+.ds-page-header {
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 26px;
+  margin-bottom: 38px;
+}
+.ds-page-title {
+  font-family: var(--ds-serif);
+  font-weight: 500;
+  font-size: 52px;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 12px 0 0;
+}
+.ds-page-lede {
+  font-family: var(--ds-serif);
+  font-size: 20px;
+  line-height: 1.5;
+  color: #29263a;
+  max-width: 58ch;
+  margin: 18px 0 0;
+}
+
+/* ---- section scaffolding ---- */
+.ds-section {
+  margin-top: 52px;
+}
+.ds-section:first-of-type {
+  margin-top: 0;
+}
+.ds-h2 {
+  font-family: var(--ds-serif);
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px;
+}
+.ds-h3 {
+  font-family: var(--ds-grotesk);
+  font-weight: 600;
+  font-size: 16px;
+  margin: 28px 0 12px;
+}
+.ds-prose {
+  font-family: var(--ds-serif);
+  font-size: 17px;
+  line-height: 1.6;
+  color: #29263a;
+  max-width: 64ch;
+}
+.ds-prose + .ds-prose {
+  margin-top: 12px;
+}
+.ds-prose code,
+.ds-inline-code {
+  font-family: var(--ds-mono);
+  font-size: 0.86em;
+  background: var(--ds-tint);
+  color: var(--indigo);
+  padding: 1px 6px;
+  border-radius: 5px;
+}
+
+/* ---- specimen frame ---- */
+.ds-specimen {
+  border: 1.5px solid var(--ink);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 18px;
+  background: var(--paper);
+}
+.ds-specimen-stage {
+  padding: 36px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(45deg, var(--ds-line) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--ds-line) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--ds-line) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--ds-line) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+.ds-specimen-stage.is-plain {
+  background-image: none;
+}
+.ds-specimen-stage.is-dark {
+  background-image: none;
+  background-color: var(--navy);
+}
+.ds-specimen-stage.is-center {
+  justify-content: center;
+}
+.ds-specimen-stage.is-block {
+  display: block;
+}
+.ds-specimen-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 14px;
+  border-top: 1.5px solid var(--ink);
+  background: var(--paper);
+  font-family: var(--ds-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+/* ---- code block ---- */
+.ds-code {
+  position: relative;
+  margin-top: 14px;
+  border: 1px solid var(--ds-line-strong);
+  border-radius: 10px;
+  background: #1b1930;
+  overflow: hidden;
+}
+.ds-code pre {
+  margin: 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+  font-family: var(--ds-mono);
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: #e9e4f2;
+  white-space: pre;
+}
+.ds-code-copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+.ds-code-lang {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  font-family: var(--ds-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(233, 228, 242, 0.4);
+}
+.ds-code.has-lang pre {
+  padding-top: 34px;
+}
+
+/* ---- tables (tokens + props) ---- */
+.ds-table-wrap {
+  margin-top: 18px;
+  border: 1px solid var(--ds-line-strong);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ds-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--ds-grotesk);
+  font-size: 13.5px;
+}
+.ds-table th {
+  text-align: left;
+  font-family: var(--ds-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--label);
+  font-weight: 400;
+  padding: 11px 14px;
+  background: var(--ds-tint);
+  border-bottom: 1px solid var(--ds-line-strong);
+}
+.ds-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--ds-line);
+  vertical-align: top;
+  color: var(--ink);
+}
+.ds-table tr:last-child td {
+  border-bottom: none;
+}
+.ds-table code {
+  font-family: var(--ds-mono);
+  font-size: 12px;
+  color: var(--indigo);
+}
+.ds-table .ds-muted {
+  color: var(--label);
+  font-family: var(--ds-serif);
+}
+
+/* ---- color swatches ---- */
+.ds-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.ds-swatch {
+  border: 1px solid var(--ds-line-strong);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ds-swatch-chip {
+  height: 92px;
+}
+.ds-swatch-meta {
+  padding: 11px 13px;
+  background: var(--paper);
+  border-top: 1px solid var(--ds-line);
+}
+.ds-swatch-name {
+  font-family: var(--ds-grotesk);
+  font-weight: 600;
+  font-size: 13.5px;
+}
+.ds-swatch-val {
+  font-family: var(--ds-mono);
+  font-size: 11.5px;
+  color: var(--label);
+  margin-top: 3px;
+  text-transform: uppercase;
+}
+.ds-swatch-usage {
+  font-family: var(--ds-serif);
+  font-size: 13px;
+  color: var(--label);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* ---- states matrix ---- */
+.ds-states {
+  display: grid;
+  /* auto-fit so a few states stretch to fill the row instead of leaving
+     narrow trailing columns that clip wider demos */
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1px;
+  margin-top: 18px;
+  border: 1px solid var(--ds-line-strong);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ds-line-strong);
+}
+/* wide molecules (e.g. TopLinks) get one full-width column each */
+.ds-states.is-wide {
+  grid-template-columns: 1fr;
+}
+.ds-state-demo {
+  max-width: 100%;
+}
+.ds-state-cell {
+  background: var(--paper);
+  padding: 22px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-height: 92px;
+}
+.ds-state-cell.is-dark {
+  background: var(--navy);
+}
+.ds-state-demo {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ds-state-label {
+  font-family: var(--ds-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--label);
+  text-align: center;
+}
+.ds-state-label .ds-state-cond {
+  display: block;
+  margin-top: 3px;
+  color: var(--indigo);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* Pinned/forced interaction states — make transient looks visible at rest.
+   These mirror the real hover/focus/active rules in button.jsx & index.css. */
+.ds-force-hover.lj-pill,
+.ds-force-hover .lj-pill {
+  background: var(--ink);
+  color: var(--paper);
+}
+.ds-force-hover.lj-pill.gold,
+.ds-force-hover .lj-pill.gold {
+  background: var(--gold);
+  color: var(--paper);
+}
+.ds-force-hover .lj-link {
+  opacity: 1;
+  color: var(--indigo);
+}
+.ds-force-focus {
+  outline: 2px solid var(--indigo);
+  outline-offset: 2px;
+  border-radius: 999px;
+}
+.ds-force-ring {
+  box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--indigo);
+  border-radius: 999px;
+}
+
+/* ---- anatomy callouts ---- */
+.ds-anatomy {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+.ds-anatomy-row {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  padding: 12px 14px;
+  border: 1px solid var(--ds-line);
+  border-radius: 9px;
+}
+.ds-anatomy-num {
+  font-family: var(--ds-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--paper);
+  background: var(--indigo);
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ds-anatomy-label {
+  font-family: var(--ds-grotesk);
+  font-weight: 600;
+  font-size: 14px;
+}
+.ds-anatomy-desc {
+  font-family: var(--ds-serif);
+  font-size: 14px;
+  color: var(--label);
+  line-height: 1.45;
+  margin-top: 2px;
+}
+
+/* ---- callout / note ---- */
+.ds-note {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border-left: 3px solid var(--gold);
+  background: var(--ds-tint-gold);
+  border-radius: 0 8px 8px 0;
+  font-family: var(--ds-serif);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: #29263a;
+}
+.ds-note strong {
+  color: var(--ink);
+}
+
+/* ---- small inline control row (for live variant pickers) ---- */
+.ds-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 16px;
+}
+.ds-control {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ds-control-label {
+  font-family: var(--ds-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+.ds-seg {
+  display: inline-flex;
+  border: 1.4px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.ds-seg button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--ds-mono);
+  font-size: 11.5px;
+  padding: 5px 11px;
+  color: var(--ink);
+  transition: background 0.12s, color 0.12s;
+}
+.ds-seg button.is-on {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ---- misc ---- */
+.ds-type-row {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--ds-line);
+}
+.ds-type-row:last-child {
+  border-bottom: none;
+}
+.ds-type-meta {
+  flex: 0 0 130px;
+  font-family: var(--ds-mono);
+  font-size: 11px;
+  color: var(--label);
+  line-height: 1.5;
+}
+.ds-type-sample {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ds-scale-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+.ds-scale-chip {
+  border: 1px solid var(--ds-line-strong);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: var(--ds-mono);
+  font-size: 11px;
+  color: var(--label);
+  text-align: center;
+}
+.ds-scale-box {
+  background: var(--indigo);
+  border-radius: 3px;
+  margin: 0 auto 8px;
+}
+
+/* ---- flat state frames (capture-friendly: every state in the DOM) ---- */
+.ds-frame-label {
+  font-family: var(--ds-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--label);
+  margin: 22px 0 8px;
+}
+.ds-frame-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.ds-frame {
+  border: 1.5px solid var(--ink);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ds-frame-cap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-top: 1.5px solid var(--ink);
+  background: var(--paper);
+  font-family: var(--ds-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+.ds-frame-cap code {
+  font-family: var(--ds-mono);
+  font-size: 11px;
+  color: var(--indigo);
+  text-transform: none;
+}
+
+/* ---- scaled full-screen specimens (organisms / templates / pages) ---- */
+.ds-viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--paper);
+  /* static state frames are reference images — inert for a clean capture */
+  pointer-events: none;
+}
+/* live specimen — let the miniature be interacted with */
+.ds-viewport.is-interactive {
+  pointer-events: auto;
+}
+.ds-viewport-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+}
+/* the real .lj-stage is 100vh — fill the design viewport instead */
+.ds-viewport-inner .lj-stage {
+  height: 100%;
+}
+
+@media (max-width: 820px) {
+  .ds-sidebar {
+    position: static;
+    width: auto;
+    height: auto;
+    border-right: none;
+    border-bottom: 1.5px solid var(--ink);
+  }
+  .ds-main {
+    margin-left: 0;
+  }
+  .ds-content {
+    padding: 32px 22px 90px;
+  }
+}
