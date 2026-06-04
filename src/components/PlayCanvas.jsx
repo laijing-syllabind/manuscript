@@ -24,7 +24,17 @@ export default function PlayCanvas({ active = true, mode = 'field', colors = { a
     const camera = new THREE.PerspectiveCamera(58, 1, 0.1, 200);
     camera.position.z = 16;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    // WebGL can be unavailable or blocked (hardware accel off, GPU blocklisted,
+    // headless/CI, restricted webviews). Creating the renderer THROWS in that case,
+    // and an uncaught error here would unmount the whole app and blank the page —
+    // so a decorative scaffold must never be fatal. Bail gracefully instead.
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    } catch (err) {
+      console.warn('PlayCanvas: WebGL unavailable, skipping the 3D scene.', err);
+      return;
+    }
     renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
     renderer.domElement.style.cssText = 'width:100%;height:100%;display:block';
     el.appendChild(renderer.domElement);

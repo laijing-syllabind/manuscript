@@ -98,7 +98,9 @@ export default function PlayCanvasPage() {
           <strong>active</strong> gates the <code>requestAnimationFrame</code> loop; when false (or off
           the Play room) it paints a single static frame. Under{' '}
           <code>prefers-reduced-motion: reduce</code> it never animates — first paint only. The scene
-          disposes its geometry/material on unmount.
+          disposes its geometry/material on unmount. If WebGL is unavailable or blocked (hardware
+          acceleration off, GPU blocklisted, headless), it logs a warning and renders nothing rather
+          than throwing — a decorative scaffold must never blank the page.
         </Note>
       </Section>
 
