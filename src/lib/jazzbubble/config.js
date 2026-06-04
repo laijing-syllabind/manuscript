@@ -18,7 +18,7 @@ export const BRAND = {
 // three.js scene background texture). Mixer-tuned to a cool
 // paper → pale-green → mint → aqua wash.
 export const gradientConfig = {
-  colorA: '#f2eee5', // warm paper
+  colorA: BRAND.paper, // paper
   colorB: '#dbe5bc', // pale green
   colorC: '#dfffe0', // mint
   colorD: '#a0e8e8', // aqua
