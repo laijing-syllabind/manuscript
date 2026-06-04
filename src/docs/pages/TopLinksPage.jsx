@@ -30,7 +30,7 @@ export default function TopLinksPage() {
       <PageHeader
         eyebrow="Molecules"
         title="TopLinks"
-        lede="The header link cluster: Medium, LinkedIn, and Email as quiet .lj-link text links, followed by the Syllabind call-to-action as a gold Button. Reads off the shared LJ.links data."
+        lede="The header link cluster: Medium, LinkedIn, and Email as quiet .lj-link text links, plus a Design system link to the docs site, followed by the Syllabind call-to-action as a gold Button. Reads off the shared LJ.links data."
       />
 
       <Section title="Specimen">
@@ -41,8 +41,8 @@ export default function TopLinksPage() {
 
       <Section title="States">
         <Prose>
-          The <code>light</code> prop tints the three plain links to translucent paper so they hold up
-          over a dark Play room. The gold CTA Button is unchanged.
+          The <code>light</code> prop tints the plain links (including the Design system link) to
+          translucent paper so they hold up over a dark Play room. The gold CTA Button is unchanged.
         </Prose>
         <StatesGrid states={STATES} wide />
       </Section>

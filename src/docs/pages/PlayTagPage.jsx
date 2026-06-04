@@ -40,7 +40,7 @@ export default function PlayTagPage() {
       <PageHeader
         eyebrow="Molecules"
         title="PlayTag"
-        lede="The two corner captions overlaid on the Play canvas — a bottom-left scaffold note and a top-right ‘creative-coding exercise’ tag. Mono, uppercase, .14em tracking. Positioned absolutely into the room's corners."
+        lede="The two corner captions overlaid on the Play canvas — a bottom-left piece title and a top-right ‘creative-coding exercise’ tag. Mono, uppercase, .14em tracking. Positioned absolutely into the room's corners."
       />
 
       <Section title="On paper (default)">

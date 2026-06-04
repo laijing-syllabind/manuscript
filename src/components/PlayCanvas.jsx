@@ -1,18 +1,27 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import JazzBubble from './JazzBubble';
 
 /**
- * PlayCanvas — a three.js generative scaffold for the "Play room".
- * This is an honest placeholder for your real creative-coding exercise:
- * a drifting point-field (optionally wired into a network / wave / lattice),
- * tinted from the brand palette. Swap the scene body for whatever you build.
+ * PlayCanvas — the three.js surface for the "Play room".
+ *
+ * mode="bubble" mounts the real creative-coding exercise (JazzBubble: a glass
+ * blob that plays piano notes as it moves across a grid). The other modes are
+ * the original generative scaffold — a drifting, brand-tinted point cloud
+ * (optionally a network / wave / lattice) — kept as a lightweight reference.
  *
  * Props:
  *   active  — run the animation loop only when the Play room is showing
- *   mode    — 'field' | 'network' | 'wave' | 'grid'
- *   colors  — { a, b }  two hex colors for the points
+ *   mode    — 'bubble' | 'field' | 'network' | 'wave' | 'grid'
+ *   colors  — { a, b }  two brand hex colors
  */
 export default function PlayCanvas({ active = true, mode = 'field', colors = { a: '#28289c', b: '#86632c' } }) {
+  if (mode === 'bubble') return <JazzBubble active={active} colors={colors} />;
+  return <PointScaffold active={active} mode={mode} colors={colors} />;
+}
+
+// The original generative point-cloud scaffold (modes: field / network / wave / grid).
+function PointScaffold({ active = true, mode = 'field', colors = { a: '#28289c', b: '#86632c' } }) {
   const mountRef = useRef(null);
 
   useEffect(() => {

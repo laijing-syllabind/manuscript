@@ -130,3 +130,36 @@ body { margin: 0; background: var(--paper); color: var(--ink); }
 .lj-irow { transition: background .15s; }
 .lj-irow:hover { background: rgba(40, 40, 156, .05); }
 .lj-irow:hover .lj-iarrow { transform: translateX(4px); opacity: 1; }
+
+/* ---- JazzBubble play-room help panel (brand-themed keycap legend) ---- */
+.jb-tip {
+  position: absolute; right: 24px; bottom: 22px; z-index: 5;
+  max-width: 272px; padding: 14px 16px 12px;
+  background: rgba(11, 10, 31, .62);
+  border: 1px solid rgba(250, 246, 236, .16);
+  border-radius: 13px;
+  -webkit-backdrop-filter: blur(11px); backdrop-filter: blur(11px);
+  color: rgba(250, 246, 236, .86);
+  font-family: "Space Mono", monospace; font-size: 11px; line-height: 1.7; letter-spacing: .02em;
+}
+.jb-tip-sound { font-weight: 700; color: #fff; margin: 0 0 8px; }
+.jb-tip ul { list-style: none; padding: 0; margin: 0; }
+.jb-tip li { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; margin-bottom: 3px; }
+.jb-tip .jb-sep { opacity: .6; margin: 0 2px; }
+.jb-key, .jb-mouse {
+  display: inline-block;
+  background: rgba(250, 246, 236, .12);
+  border: 1px solid rgba(250, 246, 236, .22);
+  border-radius: 5px; padding: 1px 6px;
+  font-family: "Space Mono", monospace; font-size: 10.5px; line-height: 1.6;
+  transition: background .08s ease, border-color .08s ease, color .08s ease;
+}
+.jb-key.is-down {
+  background: var(--gold); border-color: var(--gold); color: var(--navy); font-weight: 700;
+}
+.jb-dismiss {
+  position: absolute; top: 6px; right: 9px;
+  background: none; border: none; color: rgba(250, 246, 236, .5);
+  font-size: 14px; line-height: 1; cursor: pointer; padding: 0;
+}
+.jb-dismiss:hover { color: #fff; }

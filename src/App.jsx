@@ -21,7 +21,7 @@ export default function App() {
     <Stage
       theme={theme}
       transition="flip" // 'flip' | 'iris' | 'cover' | 'dissolve'
-      canvasMode="lines" // 'field' | 'bubble' | 'confetti' | 'lines'
+      canvasMode="bubble" // 'bubble' (JazzBubble) | 'field' | 'network' | 'wave' | 'grid'
       canvasColors={{ a: '#28289C', b: '#86632C' }}
       wordmark={<span style={{ fontFamily: SERIF, fontSize: 23, letterSpacing: '-.01em', color: 'var(--ink)' }}>Lai‑Jing&nbsp;Chu</span>}
       topRight={<TopLinks />}
