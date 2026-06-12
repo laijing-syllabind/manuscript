@@ -1,6 +1,9 @@
-# Manuscript — agent guide
+---
+description: Manuscript agent guide — design system doc sync and repo orientation
+alwaysApply: true
+---
 
-> **🔄 Maintenance Notice:** Source of truth for project agent instructions. `AGENTS.md` (Cursor/Composer) and `.cursor/rules/manuscript-agent-guide.mdc` are generated from this file. After editing shared content below, run `npm run sync:agent-docs`.
+> **🔄 Maintenance Notice:** Generated from `CLAUDE.md`. Do not edit shared content here directly — update `CLAUDE.md` and run `npm run sync:agent-docs`.
 
 ## Design system docs are a mirror of the code — keep them in sync
 

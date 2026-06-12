@@ -1,6 +1,10 @@
 # Manuscript — agent guide
 
-> **🔄 Maintenance Notice:** Source of truth for project agent instructions. `AGENTS.md` (Cursor/Composer) and `.cursor/rules/manuscript-agent-guide.mdc` are generated from this file. After editing shared content below, run `npm run sync:agent-docs`.
+This file provides guidance to Cursor, Composer, and other AI coding assistants when working in this repository.
+
+> **🔄 Maintenance Notice:** Generated from `CLAUDE.md`. Do not edit shared content here directly — update `CLAUDE.md` and run `npm run sync:agent-docs`.
+>
+> **AI Initiation Protocol:** On first message in a session, if `AGENTS.md`, `CLAUDE.md`, or `.cursor/rules/manuscript-agent-guide.mdc` differ in shared content, reconcile immediately before substantive work.
 
 ## Design system docs are a mirror of the code — keep them in sync
 
